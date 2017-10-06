@@ -19,12 +19,14 @@ thread_lock = Lock()
 def background_thread():
     """Example of how to send server generated events to clients."""
     count = 0
+    """
     while True:
         socketio.sleep(10)
         count += 1
         socketio.emit('my_response',
                       {'data': 'Server generated event', 'count': count},
                       namespace='/test')
+    """
 
 
 @app.route('/')
@@ -110,4 +112,4 @@ def test_disconnect():
 
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True)
+    socketio.run(app, debug=False)
